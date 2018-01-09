@@ -1,1 +1,25 @@
+$primary: #169D5B;
+
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
 @import "node_modules/bootstrap/scss/bootstrap";
+
+html {
+  font-size: 1.25rem;
+}
+
+body {
+  background: #222222;
+  margin-bottom: 5rem;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1rem;
+    background: linear-gradient(to right, #181818, #00A385);
+  }
+}
