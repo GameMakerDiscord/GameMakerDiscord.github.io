@@ -30,25 +30,20 @@ body{
 
   margin:0;
   padding:0;
-  box-shadow: 0 0px 22px #000000b8;
+  box-shadow: 0 0px 12px #000000a8;
 }
 
 #navbar a{
   width:100%;
   text-align: center;
-  padding:25px;
-  font-size:2rem;
+  padding:15px;
+  font-size:1.6rem;
   font-weight: bold;
 }
 
 #navbar a:link,
 #navbar a:visited{
-  color:#ffffff;
-}
-
-#navbar a:link:hover,
-#navbar a:visited:hover{
-  border: 1.4px dashed #ffffff;
+  color:#169d5b;
 }
 
 #navbar a i{
@@ -56,17 +51,25 @@ body{
 }
 
 #reddit{
-  background-color: #FF4500;
+  background-color:#252528;
+  color: #FF4500;
 }
 #discord{
-  background-color: #7289DA;
+  background-color:#252528;
+  color: #7289DA;
 }
 #github{
-  background-color: #000000;
+  background-color:#252528;
+  color: #000000;
 }
 
 #navbar a:hover{
+  color:#00a385;
+}
+
+#navbar aa:hover{
   background-color:#00a385;
+  border: 2.4px dashed #ffffff;
 }
 
 .container{
@@ -74,8 +77,21 @@ body{
   flex-wrap:wrap;
   justify-content: center;
   width:100%;
+}
 
+h1 img{
+  display: inline-block;
+  height:5rem;
+  vertical-align: bottom;
+  padding:0;
+  margin:0;
+}
 
+#title_wrapper{
+  width:100%;
+}
+
+#title_logo{
 }
 
 .media.mt-4{
@@ -86,20 +102,20 @@ body{
   text-decoration: none;
   color:#169d5b;
   transition: 0.3s all;
-  border: 1.4px dashed #ffffff00;
+  border: 2.4px dashed #00a38500;
 }
 
 :link:hover,
 :visited:hover{
   color:#00a385;
-  border-bottom: 1.4px dashed #ffffff;
+  border-bottom: 2.4px dashed #00a385;
 }
 
 .title{
   text-align: center;
   font-size:3.4rem;
   padding:40px;
-  text-shadow: 0 3px 8px #00000065;
+  text-shadow: 0 3px 10px #00000065;
 }
 
 .mt-0{
