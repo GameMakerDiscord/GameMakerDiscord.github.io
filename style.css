@@ -75,6 +75,7 @@ body{
   justify-content: center;
   width:100%;
 
+
 }
 
 .media.mt-4{
@@ -127,4 +128,30 @@ body{
   height:0.3rem;
   width:400px;
   background:linear-gradient(90deg,#25252800,#00a385);
+}
+
+@media(max-width:640px){
+  #navbar a{
+    padding:10px;
+    font-size:1rem;
+  }
+
+  .title{
+    font-size:2rem;
+    padding:10px;
+  }
+
+  .media{
+    padding:10px;
+  }
+
+  .media-body{
+    width:220px;
+
+    height:200px;
+  }
+
+  .media::before{
+    width:280px;
+  }
 }
