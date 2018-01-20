@@ -3,6 +3,9 @@ import $ from 'jquery';
 import Popper from 'popper.js';
 import bootstrap from 'bootstrap';
 
+// Markdown processor
+import marked from 'marked';
+
 // Local imports
 import loadData from './api';
 
@@ -20,7 +23,15 @@ import loadData from './api';
 
   console.log(org);
 
+  // Build the initial grid of repos
   buildRepoGrid(org.repos);
+
+  // Bind overview close button
+  $('#close-overview').click(e => closeOverview());
+
+  // Bind overview cover to close
+  $('.overview-cover').click(e => closeOverview());
+  
 })();
 
 /**
@@ -52,7 +63,7 @@ function buildRepoGrid(repos) {
     cardParent.append(cardBody);
 
     cardParent.on('click', e => {
-      window.open(repo.html_url, '_blank');
+      showOverview(repo);
     });
 
     cards.push(cardParent);
@@ -62,4 +73,54 @@ function buildRepoGrid(repos) {
   cards.forEach(card => {
     $('.card-container').append(card);
   });
+}
+
+/**
+ * Shows the overview panel for the given repo
+ */
+function showOverview(repo) {
+  
+  // Set repo button link
+  $('#visit-repo').attr('href', repo.html_url);
+
+  // Parse the readme
+  let readmeMarkdown = atob(repo.readme);
+
+  // Parse markdown
+  let readmeHTML = marked(readmeMarkdown);
+
+  // Clear existing markdown content
+  $('.md').empty();
+
+  // Append markdown to the page
+  $('.md').html(readmeHTML);
+
+  // Bring cover to foreground
+  $('.overview-cover').css('z-index', 1);
+
+  // Fade it in
+  $('.overview-cover').css('opacity', 0.5);
+
+  // Slide the overview in
+  $('.overview').css('transform', 'translateX(0)');
+
+  // Prevent the body from scrolling
+  $('body').css('overflow', 'hidden');
+  $('html').css('overflow', 'hidden');
+}
+
+function closeOverview() {
+  
+  // Slide the overview out
+  $('.overview').css('transform', 'translateX(100%)'); 
+  
+  // Fade out the cover
+  $('.overview-cover').css('opacity', 0);
+
+  // Put away the cover after it's faded (400ms)
+  setTimeout(() => $('.overview-cover').css('z-index', -1), 400);
+
+  // Enable scrolling on the homepage
+  $('body').css('overflow', 'auto');
+  $('html').css('overflow', 'auto');
 }
