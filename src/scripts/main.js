@@ -29,7 +29,7 @@ import loadData from './api';
 function buildRepoGrid(repos) {
 
   // Clear container of all existing elements
-  $('.card-columns').empty();
+  $('.card-container').empty();
 
   let cards = [];
 
@@ -60,6 +60,6 @@ function buildRepoGrid(repos) {
 
   // Append cards to page
   cards.forEach(card => {
-    $('.card-columns').append(card);
+    $('.card-container').append(card);
   });
 }
