@@ -24,7 +24,7 @@ let topics;
     org = await loadData();
   } catch(e) {
 
-    // Handle load error
+    // Log load error
     console.log('Error loading data!\n\n' + e);
 
     return;
@@ -42,6 +42,17 @@ let topics;
   // Build the initial grid of repos
   buildRepoGrid(org.repos);
 
+  // Set up event handlers
+  bindInputs();
+  
+  // Hide the loading screen
+  hideLoadingScreen();
+})();
+
+/**
+ * Sets up event handlers for common page elements
+ */
+function bindInputs() {
   // Bind overview close button
   $('#close-overview').click(e => closeOverview());
 
@@ -53,10 +64,30 @@ let topics;
     let query = $(e.target).val();
     updateQuery(query);
   });
-  
-  // Hide the loading screen
-  hideLoadingScreen();
-})();
+
+  $('.overview').on('click', 'a', function(e) {
+    let href = $(this).attr('href');
+
+    // If this link is a hash link
+    if (href[0] === '#') {
+      
+      // Search for element
+      let target = $(href);
+
+      // If found
+      if (target.length) {
+
+        // Scroll there
+        $('.overview').animate({
+          scrollTop: target[0].offsetTop
+        }, 400);
+
+        // Prevent navigation
+        e.preventDefault();
+      }
+    }
+  });
+}
 
 /**
  * Dismisses the loading screen
