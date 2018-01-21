@@ -43,10 +43,14 @@ export default async function loadData() {
       timestamp: new Date()
     };
 
+    // Save cache to local storage
     localStorage.setItem('gmd_ghorg_api', JSON.stringify(cache));
 
     return org;
   } catch (e) {
+
+    // Return cached data in the event that API is unreachable and cache exists
+    if (existing) return existing.org;
     
     // Throw an API error
     throw new Error(e);
