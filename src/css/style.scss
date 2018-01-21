@@ -29,6 +29,7 @@ body {
   color: white;
   font-family: 'Oswald', sans-serif;
   padding-top: $top-bar-size;
+  overflow-x: hidden;
 
   &:before {
     content: '';

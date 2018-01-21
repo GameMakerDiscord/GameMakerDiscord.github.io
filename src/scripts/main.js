@@ -110,8 +110,7 @@ function showOverview(repo) {
   $('.overview').css('transform', 'translateX(0)');
 
   // Prevent the body from scrolling
-  $('body').css('overflow', 'hidden');
-  $('html').css('overflow', 'hidden');
+  $('html').css('overflow-y', 'hidden');
 
   // Scroll the overview to the top
   $('.overview')[0].scrollTo(0, 0);
@@ -132,8 +131,7 @@ function closeOverview() {
   setTimeout(() => $('.overview-cover').css('z-index', -1), 400);
 
   // Enable scrolling on the homepage
-  $('body').css('overflow', 'auto');
-  $('html').css('overflow', 'auto');
+  $('html').css('overflow-y', 'scroll');
 }
 
 /**
