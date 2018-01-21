@@ -9,13 +9,18 @@ import marked from 'marked';
 // Local imports
 import loadData from './api';
 
+// Global organization information
+let org;
+
 // Page setup
 (async () => {
-  let org;
-
+  
   // Attempt to load org data
   try {
     org = await loadData();
+
+    // Hide the loading screen once data is loaded
+    hideLoadingScreen();
   } catch(e) {
     // Handle load error
     console.log('Error loading data!\n\n' + e);
@@ -112,6 +117,9 @@ function showOverview(repo) {
   $('.overview')[0].scrollTo(0, 0);
 }
 
+/**
+ * Close the overview panel
+ */
 function closeOverview() {
   
   // Slide the overview out
@@ -126,4 +134,16 @@ function closeOverview() {
   // Enable scrolling on the homepage
   $('body').css('overflow', 'auto');
   $('html').css('overflow', 'auto');
+}
+
+/**
+ * Dismisses the loading screen
+ */
+function hideLoadingScreen() {
+
+  // Fade out the loading screen
+  $('.loading-container').css('opacity', 0);
+
+  // Remove the loading screen after its gone
+  setTimeout(() => $('.loading-container').remove(), 400);
 }
