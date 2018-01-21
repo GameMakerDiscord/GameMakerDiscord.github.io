@@ -35,21 +35,10 @@ body {
     content: '';
     position: absolute;
     top: 0;
-    left: -200%;
-    height: $top-bar-size;
-    width: 300%;
-    background: linear-gradient(to right, #181818, #00A385, #181818, #00A385);
-    animation: header-slide linear 10s infinite;
-  }
-}
-
-// Bar animation
-@keyframes header-slide {
-  0% {
-    left: -200%;
-  }
-  100% {
     left: 0;
+    height: $top-bar-size;
+    width: 100%;
+    background: linear-gradient(to right, #181818, #00A385);
   }
 }
 

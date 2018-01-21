@@ -94,7 +94,7 @@ function showOverview(repo) {
   // Parse markdown
   let readmeHTML = marked(readmeMarkdown);
 
-  // Clear existing markdown content
+  // Clear existing markdown content (just in case)
   $('.md').empty();
 
   // Append markdown to the page
@@ -129,6 +129,9 @@ function closeOverview() {
 
   // Put away the cover after it's faded (400ms)
   setTimeout(() => $('.overview-cover').css('z-index', -1), 400);
+
+  // Clear the markdown once its gone
+  setTimeout(() => $('.md').empty(), 400);
 
   // Enable scrolling on the homepage
   $('html').css('overflow-y', 'scroll');
