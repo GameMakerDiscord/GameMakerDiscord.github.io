@@ -107,6 +107,9 @@ function showOverview(repo) {
   // Prevent the body from scrolling
   $('body').css('overflow', 'hidden');
   $('html').css('overflow', 'hidden');
+
+  // Scroll the overview to the top
+  $('.overview')[0].scrollTo(0, 0);
 }
 
 function closeOverview() {
