@@ -18,6 +18,12 @@ $logo-size: 8rem;
 // Speed of overview animtion
 $overview-animation-speed: 0.4s;
 
+// Topic highlight border color
+$topic-highlight: white;
+
+// Topic highlight size
+$topic-highlight-size: 2px;
+
 html {
   font-size: 1.25rem;
   overflow-x: hidden;
@@ -99,6 +105,10 @@ nav {
     padding-bottom: 0.4rem;
   }
 
+  .card-footer {
+    padding-top: 0;
+  }
+
   &:hover {
     border: 1px solid $primary;
 
@@ -142,7 +152,7 @@ nav {
 
   transition: transform $overview-animation-speed;
 
-  overflow-y: scroll;
+  overflow: auto;
 
   img {
     max-width: 100%;
@@ -174,6 +184,30 @@ nav {
   max-height: 100%;
   border-radius: 4px;
   user-select: none;
+}
+
+.topics {
+  max-width: 600px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 1rem auto;
+
+  .form-check-input {
+    display: none;
+  }
+
+  .form-check-input:checked + .form-check-label > .badge {
+    box-shadow: 0px 2px 0px $topic-highlight,
+                0px -2px 0px $topic-highlight,
+                2px 0px 0px $topic-highlight,
+                -2px 0px 0px $topic-highlight;
+  }
+
+  .badge {
+    user-select: none;
+    cursor: pointer;
+    font-weight: lighter;
+  }
 }
 
 @media(max-width: 1024px) {
