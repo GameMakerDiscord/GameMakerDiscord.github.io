@@ -42,6 +42,9 @@ export function buildTopics(topics) {
     let label = $(`<label class="form-check-label" for="${topic}-checkbox">`);
     let badge = $(`<a class="badge badge-pill badge-primary">${topic}</a>`);
 
+    // Add topic class
+    checkboxContainer.addClass(`topic-${topic}`);
+
     // Bind checkbox change
     checkbox.change(e => {
 

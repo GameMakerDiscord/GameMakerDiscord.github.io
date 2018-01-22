@@ -24,6 +24,14 @@ $topic-highlight: white;
 // Topic highlight size
 $topic-highlight-size: 2px;
 
+// Topic colors
+$topics: (
+    example: #453349,
+    library: #394a4e,
+    game: #434c3a,
+    extension: #4c2f2f
+);
+
 html {
   font-size: 1.25rem;
   overflow-x: hidden;
@@ -107,6 +115,14 @@ nav {
 
   .card-footer {
     padding-top: 0;
+  }
+
+  @each $name, $value in $topics {
+    &.topic-#{$name} {
+      .card-header {
+        background: linear-gradient(to right, #181818, $value);
+      }
+    }
   }
 
   &:hover {
@@ -208,6 +224,14 @@ nav {
     user-select: none;
     cursor: pointer;
     font-weight: lighter;
+  }
+
+  @each $name, $value in $topics {
+    .form-check.topic-#{$name} {
+      .badge {
+        background-color: lighten($value, 15);
+      }
+    }
   }
 }
 

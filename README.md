@@ -18,3 +18,5 @@ Organization info is fetched from a custom API that relays organization info fro
 
 ## License
 MIT
+
+Written by Chris "Topherlicious" Anselmo

@@ -19,6 +19,11 @@ export default function buildRepoGrid(repos) {
     let cardBody = $('<div class="card-body">');
     let cardText = $(`<p class="card-text">`);
 
+    // Apply topic classes
+    repo.topics.data.names.forEach(topic => {
+      cardParent.addClass(`topic-${topic}`);
+    });
+
     // Apply repo information to card
     cardHeader.text(repo.name);
     cardText.text(repo.description);
