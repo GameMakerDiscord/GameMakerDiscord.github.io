@@ -10,6 +10,9 @@ import { updateRepos, updateQuery } from './search';
 import buildRepoGrid from './grid';
 import loadData from './api';
 
+// Config
+import * as config from '../config.json';
+
 // Global organization information
 let org;
 

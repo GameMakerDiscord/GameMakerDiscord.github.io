@@ -1,10 +1,11 @@
 // Imports
 import $ from 'jquery';
+import * as config from '../config.json';
 
 const ONE_HOUR = 60 * 60 * 1000;
 
 // API url
-const api = 'https://chrisanselmo.com/gmd_ghorg_api';
+const api = config.api;
 
 /**
  * Loads organization information from cache or server

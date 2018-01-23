@@ -2,12 +2,13 @@
 import $ from 'jquery';
 import showdown from 'showdown';
 import { getScrollBarWidth, isBodyScrolling } from './scrollbar';
+import * as config from '../config.json';
 
 // Set up markdown processor
 let markdownConverter = new showdown.Converter();
 markdownConverter.setFlavor('github');
 markdownConverter.setOption('emoji', true);
-markdownConverter.setOption('ghMentions', true);
+markdownConverter.setOption('ghMentions', config.enableReadmeGitHubMentionLinks);
 
 /**
  * Shows the overview panel for the given repo
@@ -25,7 +26,7 @@ export function showOverview(repo) {
 
   // Number emoji support
   readmeHTML = readmeHTML.replace(/(:zero:)/g,  '0️⃣');
-  readmeHTML = readmeHTML.replace(/(:one:)/g,   '1️⃣ ');
+  readmeHTML = readmeHTML.replace(/(:one:)/g,   '1️⃣');
   readmeHTML = readmeHTML.replace(/(:two:)/g,   '2️⃣');
   readmeHTML = readmeHTML.replace(/(:three:)/g, '3️⃣');
   readmeHTML = readmeHTML.replace(/(:four:)/g,  '4️⃣');

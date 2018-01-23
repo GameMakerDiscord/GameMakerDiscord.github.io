@@ -1,0 +1,10 @@
+{
+  "api": "https://chrisanselmo.com/gmd_ghorg_api",
+  "enableReadmeGitHubMentionLinks": true,  
+  "topic-icons": {
+    "example": "star",
+    "game": "gamepad",
+    "extension": "code-branch",
+    "library": "book"
+  }
+}

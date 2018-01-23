@@ -1,6 +1,7 @@
 // Imports
 import $ from 'jquery';
 import { updateTopics } from './search';
+import * as config from '../config.json';
 
 /**
  * Builds a list of topics from all available repos
@@ -43,7 +44,17 @@ export function buildTopics(topics) {
     let checkboxContainer = $('<div class="form-check form-check-inline">');
     let checkbox = $(`<input class="form-check-input topic-check-box" type="checkbox" id="${topic}-checkbox" value="${topic}">`);
     let label = $(`<label class="form-check-label" for="${topic}-checkbox">`);
-    let badge = $(`<a class="badge badge-pill badge-primary">${topic}</a>`);
+    let badge = $(`<a class="badge badge-pill badge-primary">`);
+
+    // Check if topic has an icon
+    if (config['topic-icons'][topic]) {
+      let icon = $(`<i class="fas fa-fw mr-1 fa-${config['topic-icons'][topic]}">`);
+
+      badge.append(icon);
+    }
+
+    // Add topic text to badge
+    badge.append(topic);
 
     // Add topic class
     checkboxContainer.addClass(`topic-${topic}`);

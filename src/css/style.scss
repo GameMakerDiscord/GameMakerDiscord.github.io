@@ -1,36 +1,8 @@
-// Bootstrap overrides
-$primary: #169D5B;
-
 // Imports
+@import "src/css/_variables.scss";
 @import url('https://fonts.googleapis.com/css?family=Oswald:200,400,700');
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "src/css/spinner.scss";
-
-// Nav link padding
-$nav-padding: 1em;
-
-// Size of animated bar
-$top-bar-size: 0.5rem;
-
-// Size of logo
-$logo-size: 8rem;
-
-// Speed of overview animtion
-$overview-animation-speed: 0.4s;
-
-// Topic highlight border color
-$topic-highlight: white;
-
-// Topic highlight size
-$topic-highlight-size: 2px;
-
-// Topic colors
-$topics: (
-    example: #453349,
-    library: #394a4e,
-    game: #434c3a,
-    extension: #4c2f2f
-);
 
 html {
   font-size: 1.25rem;
