@@ -1,6 +1,7 @@
 // Imports
 import $ from 'jquery';
 import marked from 'marked';
+import { getScrollBarWidth, isBodyScrolling } from './scrollbar';
 
 /**
  * Shows the overview panel for the given repo
@@ -36,6 +37,16 @@ export function showOverview(repo) {
 
   // Scroll the overview to the top
   $('.overview')[0].scrollTo(0, 0);
+
+  // Determine if we need to account for scrollbar size
+  if (isBodyScrolling()) {
+
+    // Calculate scrollbar width
+    let scrollbarWidth = getScrollBarWidth();
+
+    // Apply it to the document
+    $('html').css('padding-right', `${scrollbarWidth}px`);
+  }
 }
 
 /**
@@ -57,4 +68,7 @@ export function closeOverview() {
 
   // Enable scrolling on the homepage
   $('html').css('overflow-y', 'scroll');
+
+  // Remove any padding due to scroll bar
+  $('html').css('padding-right', '0');
 }
