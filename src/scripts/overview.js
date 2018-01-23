@@ -1,7 +1,13 @@
 // Imports
 import $ from 'jquery';
-import marked from 'marked';
+import showdown from 'showdown';
 import { getScrollBarWidth, isBodyScrolling } from './scrollbar';
+
+// Set up markdown processor
+let markdownConverter = new showdown.Converter();
+markdownConverter.setFlavor('github');
+markdownConverter.setOption('emoji', true);
+markdownConverter.setOption('ghMentions', true);
 
 /**
  * Shows the overview panel for the given repo
@@ -15,7 +21,20 @@ export function showOverview(repo) {
   let readmeMarkdown = atob(repo.readme);
 
   // Parse markdown
-  let readmeHTML = marked(readmeMarkdown);
+  let readmeHTML = markdownConverter.makeHtml(readmeMarkdown);
+
+  // Number emoji support
+  readmeHTML = readmeHTML.replace(/(:zero:)/g,  '0️⃣');
+  readmeHTML = readmeHTML.replace(/(:one:)/g,   '1️⃣ ');
+  readmeHTML = readmeHTML.replace(/(:two:)/g,   '2️⃣');
+  readmeHTML = readmeHTML.replace(/(:three:)/g, '3️⃣');
+  readmeHTML = readmeHTML.replace(/(:four:)/g,  '4️⃣');
+  readmeHTML = readmeHTML.replace(/(:five:)/g,  '5️⃣');
+  readmeHTML = readmeHTML.replace(/(:six:)/g,   '6️⃣');
+  readmeHTML = readmeHTML.replace(/(:seven:)/g, '7️⃣');
+  readmeHTML = readmeHTML.replace(/(:eight:)/g, '8️⃣');
+  readmeHTML = readmeHTML.replace(/(:nine:)/g,  '9️⃣');
+  readmeHTML = readmeHTML.replace(/(:ten:)/g,   '🔟');
 
   // Clear existing markdown content (just in case)
   $('.md').empty();
