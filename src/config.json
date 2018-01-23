@@ -2,9 +2,9 @@
   "api": "https://chrisanselmo.com/gmd_ghorg_api",
   "enableReadmeGitHubMentionLinks": true,  
   "topic-icons": {
-    "example": "star",
+    "example": "file-code",
     "game": "gamepad",
-    "extension": "code-branch",
+    "extension": "cogs",
     "library": "book"
   }
 }
