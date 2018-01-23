@@ -13,6 +13,9 @@ export default function buildRepoGrid(repos) {
   // Iterate over each repo
   repos.forEach(repo => {
 
+    // Skip over the about repo
+    if (repo.name === 'about') return;
+
     // Construct bootstrap card
     let cardParent = $('<div class="card text-white card-gms2">');
     let cardHeader = $('<div class="card-header">');
