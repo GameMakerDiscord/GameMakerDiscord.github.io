@@ -4,7 +4,7 @@ import Popper from 'popper.js';
 import bootstrap from 'bootstrap';
 
 // Local imports
-import { closeOverview } from './overview';
+import { showOverview, closeOverview } from './overview';
 import { parseTopics, buildTopics } from './topics';
 import { updateRepos, updateQuery } from './search';
 import buildRepoGrid from './grid';
@@ -53,6 +53,15 @@ let topics;
  * Sets up event handlers for common page elements
  */
 function bindInputs() {
+
+  // Bind logo links
+  $('.logo-link').click(e => {
+    e.preventDefault();
+
+    // Show the about readme
+    showOverview(window.aboutRepo);
+  });
+
   // Bind overview close button
   $('#close-overview').click(e => closeOverview());
 
@@ -65,6 +74,7 @@ function bindInputs() {
     updateQuery(query);
   });
 
+  // Bind markdown anchors
   $('.overview').on('click', 'a', function(e) {
     let href = $(this).attr('href');
 

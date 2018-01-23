@@ -11,6 +11,9 @@ export function parseTopics(repos) {
   // Iterate over each repo
   repos.forEach(repo => {
 
+    // Don't get topics from the about repo or site repo
+    if (repo.name === 'about' || repo.name === 'GameMakerDiscord.github.io') return;
+
     // Iterate over topics
     repo.topics.data.names.forEach(topic => {
 

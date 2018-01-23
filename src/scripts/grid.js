@@ -14,7 +14,13 @@ export default function buildRepoGrid(repos) {
   repos.forEach(repo => {
 
     // Skip over the about repo
-    if (repo.name === 'about') return;
+    if (repo.name === 'about') {
+      window.aboutRepo = repo;
+      return;
+    };
+
+    // Skip over site repo
+    if (repo.name === 'GameMakerDiscord.github.io') return;
 
     // Construct bootstrap card
     let cardParent = $('<div class="card text-white card-gms2">');

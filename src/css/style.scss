@@ -39,7 +39,6 @@ html {
 
 body {
   background: #212121;
-  margin-bottom: 5rem;
   color: white;
   font-family: 'Oswald', sans-serif;
   padding-top: $top-bar-size;
@@ -78,13 +77,29 @@ nav {
 }
 
 .logo {
+  box-sizing: content-box;
   width: $logo-size;
   height: $logo-size;
   border-radius: 50%;
-  transition: box-shadow 2s;
+  transition: border-color 0.4s;
+  border: 3px solid transparent;
 
   &:hover {
-    box-shadow: 0 0 1rem $primary;
+    border-color: $primary;
+  }
+}
+
+.logo-link {
+  cursor: pointer;
+}
+
+h1 .logo-link {
+  color: white;
+  transition: color 0.4s;
+
+  &:hover {
+    color: $primary;
+    text-decoration: none;
   }
 }
 
