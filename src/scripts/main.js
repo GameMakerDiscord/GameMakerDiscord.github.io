@@ -6,7 +6,7 @@ import bootstrap from 'bootstrap';
 // Local imports
 import { showOverview, closeOverview } from './overview';
 import { parseTopics, buildTopics } from './topics';
-import { updateRepos, updateQuery } from './search';
+import { updateRepos, updateQuery, filterRepos, setMode, sortModes, setAscending } from './search';
 import buildRepoGrid from './grid';
 import loadData from './api';
 
@@ -47,6 +47,9 @@ let topics;
 
   // Set up event handlers
   bindInputs();
+
+  // Initial sort
+  filterRepos();
   
   // Hide the loading screen
   hideLoadingScreen();
@@ -75,6 +78,34 @@ function bindInputs() {
   $('#search').on('input', e => {
     let query = $(e.target).val();
     updateQuery(query);
+  });
+
+  // Alphabetical sort
+  $('#filter-alpha').click(e => {
+    setMode(sortModes.alphabetical);
+    $('#filter-alpha').removeClass('btn-light').addClass('btn-primary');
+    $('#filter-commit').addClass('btn-light').removeClass('btn-primary');
+  });
+
+  // Commit date sort
+  $('#filter-commit').click(e => {
+    setMode(sortModes.commitDate);
+    $('#filter-commit').removeClass('btn-light').addClass('btn-primary');
+    $('#filter-alpha').addClass('btn-light').removeClass('btn-primary');
+  });
+
+  // Ascending sort
+  $('#filter-asc').click(e => {
+    setAscending(true);
+    $('#filter-asc').removeClass('btn-light').addClass('btn-primary');
+    $('#filter-des').addClass('btn-light').removeClass('btn-primary');
+  });
+
+  // Descending sort
+  $('#filter-des').click(e => {
+    setAscending(false);
+    $('#filter-des').removeClass('btn-light').addClass('btn-primary');
+    $('#filter-asc').addClass('btn-light').removeClass('btn-primary');
   });
 
   // Bind markdown anchors

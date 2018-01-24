@@ -43,8 +43,20 @@
       <a href="#" class="logo-link">/r/GameMaker Discord GitHub</a>
     </h1>
 
-    <!-- Search & Filter -->
+    <!-- Search -->
     <input type="text" style="width: 35%;" class="form-control m-auto" id="search" placeholder="Search...">
+
+    <!-- Sort -->
+    <div class="filters d-flex justify-content-center mt-3" style="width: 35%;">
+      <div class="btn-group mr-3" role="group" aria-label="Basic example">
+        <button type="button" id="filter-alpha" class="btn btn-sm btn-light">Alphabetical</button>
+        <button type="button" id="filter-commit" class="btn btn-sm btn-primary">Commit Date</button>
+      </div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" id="filter-asc" class="btn btn-sm btn-primary">Ascending</button>
+        <button type="button" id="filter-des" class="btn btn-sm btn-light">Descending</button>
+      </div>
+    </div>
 
     <!-- Topics -->
     <div class="topics text-center">

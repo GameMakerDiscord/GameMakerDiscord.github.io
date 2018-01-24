@@ -2,7 +2,27 @@
 import $ from 'jquery';
 import buildRepoGrid from './grid';
 
-let repos = [], query = '', topics = [];
+// Define sort mode constants
+export const sortModes = {
+  commitDate: 0,
+  alphabetical: 1
+};
+
+let repos = [],
+    query = '',
+    topics = [],
+    sortMode = sortModes.commitDate,
+    sortAscending = true;
+
+export function setMode(mode) {
+  sortMode = mode;
+  filterRepos();
+}
+
+export function setAscending(asc) {
+  sortAscending = asc;
+  filterRepos();
+}
 
 /**
  * Updates the search module repo list
@@ -36,7 +56,7 @@ export function updateTopics(newTopics) {
 /**
  * Rebuild the repo grid with filters applied
  */
-function filterRepos() {
+export function filterRepos() {
   let searchResults = [], filteredResults = [];
 
   // Only filter by query if there's more than one character
@@ -80,6 +100,56 @@ function filterRepos() {
     filteredResults = searchResults;
   }
 
+  // Sort results
+  filteredResults = sortRepos(filteredResults);
+
   // Rebuild grid with our filtered results
   buildRepoGrid(filteredResults);
 }
+
+/**
+ * Sorts repos based on current mode and direction
+ */
+function sortRepos(repos) {
+  let sortedRepos = Array.from(repos);
+
+  // Sort by proper function
+  sortedRepos.sort(repoSorts[sortMode]);
+
+  // Reverse
+  if (!sortAscending) {
+    sortedRepos.reverse();
+  }
+
+  return sortedRepos;
+}
+
+// Sort functions
+let repoSorts = {};
+
+repoSorts[sortModes.alphabetical] = (a, b) => {
+  let comp = 0;
+
+  if (a.name.toUpperCase() < b.name.toUpperCase()) {
+    comp = -1;
+  } else if (a.name.toUpperCase() > b.name.toUpperCase()) {
+    comp = 1;
+  }
+
+  return comp;
+};
+
+repoSorts[sortModes.commitDate] = (a, b) => {
+  let comp = 0;
+
+  let aDate = new Date(a.lastUpdated);
+  let bDate = new Date(b.lastUpdated);
+
+  if (aDate < bDate) {
+    comp = -1;
+  } else if (aDate > bDate) {
+    comp = 1;
+  }
+
+  return comp * -1;
+};
