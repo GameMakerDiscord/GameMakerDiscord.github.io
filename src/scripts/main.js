@@ -87,8 +87,8 @@ function bindInputs() {
     let selectedElement = sortMode === sortModes.alphabetical ? '#filter-alpha' : '#filter-commit';
     let deselectedElement = sortMode !== sortModes.alphabetical ? '#filter-alpha' : '#filter-commit';
 
-    $(selectedElement).removeClass('btn-light').addClass('btn-primary');
-    $(deselectedElement).addClass('btn-light').removeClass('btn-primary');
+    $(selectedElement).removeClass('btn-outline-secondary').addClass('btn-primary');
+    $(deselectedElement).addClass('btn-outline-secondary').removeClass('btn-primary');
   }
 
   // Apply sort toggle handler
@@ -102,8 +102,8 @@ function bindInputs() {
     let selectedElement = sortAscending ? '#filter-asc' : '#filter-des';
     let deselectedElement = (!sortAscending) ? '#filter-asc' : '#filter-des';
 
-    $(selectedElement).removeClass('btn-light').addClass('btn-primary');
-    $(deselectedElement).addClass('btn-light').removeClass('btn-primary');
+    $(selectedElement).removeClass('btn-outline-secondary').addClass('btn-primary');
+    $(deselectedElement).addClass('btn-outline-secondary').removeClass('btn-primary');
   }
 
   // Apply sort direction toggle handler
