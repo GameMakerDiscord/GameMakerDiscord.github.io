@@ -21,6 +21,12 @@ export function showOverview(repo) {
   // Set repo button link
   $('#visit-repo').attr('href', repo.html_url);
 
+  // Determine download link
+  let downloadLink = repo.archive_url.replace('{archive_format}{/ref}', 'zipball');
+
+  // Set download button link
+  $('#download-repo').attr('href', downloadLink);
+
   // Parse the readme
   let readmeMarkdown = atob(repo.readme);
 
