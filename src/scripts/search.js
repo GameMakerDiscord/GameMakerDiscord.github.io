@@ -10,9 +10,10 @@ export const sortModes = {
 
 let repos = [],
     query = '',
-    topics = [],
-    sortMode = sortModes.commitDate,
-    sortAscending = true;
+    topics = [];
+
+export let sortMode = sortModes.commitDate;
+export let sortAscending = true;
 
 export function setMode(mode) {
   sortMode = mode;

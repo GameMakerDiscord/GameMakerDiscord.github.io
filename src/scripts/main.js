@@ -6,7 +6,7 @@ import bootstrap from 'bootstrap';
 // Local imports
 import { showOverview, closeOverview } from './overview';
 import { parseTopics, buildTopics } from './topics';
-import { updateRepos, updateQuery, filterRepos, setMode, sortModes, setAscending } from './search';
+import { updateRepos, updateQuery, filterRepos, setMode, sortModes, setAscending, sortMode, sortAscending } from './search';
 import buildRepoGrid from './grid';
 import loadData from './api';
 
@@ -80,33 +80,35 @@ function bindInputs() {
     updateQuery(query);
   });
 
-  // Alphabetical sort
-  $('#filter-alpha').click(e => {
-    setMode(sortModes.alphabetical);
-    $('#filter-alpha').removeClass('btn-light').addClass('btn-primary');
-    $('#filter-commit').addClass('btn-light').removeClass('btn-primary');
-  });
+  // Sort mode toggle function
+  let sortModeHandler = e => {
+    setMode(sortMode === sortModes.alphabetical ? sortModes.commitDate : sortModes.alphabetical);
 
-  // Commit date sort
-  $('#filter-commit').click(e => {
-    setMode(sortModes.commitDate);
-    $('#filter-commit').removeClass('btn-light').addClass('btn-primary');
-    $('#filter-alpha').addClass('btn-light').removeClass('btn-primary');
-  });
+    let selectedElement = sortMode === sortModes.alphabetical ? '#filter-alpha' : '#filter-commit';
+    let deselectedElement = sortMode !== sortModes.alphabetical ? '#filter-alpha' : '#filter-commit';
 
-  // Ascending sort
-  $('#filter-asc').click(e => {
-    setAscending(true);
-    $('#filter-asc').removeClass('btn-light').addClass('btn-primary');
-    $('#filter-des').addClass('btn-light').removeClass('btn-primary');
-  });
+    $(selectedElement).removeClass('btn-light').addClass('btn-primary');
+    $(deselectedElement).addClass('btn-light').removeClass('btn-primary');
+  }
 
-  // Descending sort
-  $('#filter-des').click(e => {
-    setAscending(false);
-    $('#filter-des').removeClass('btn-light').addClass('btn-primary');
-    $('#filter-asc').addClass('btn-light').removeClass('btn-primary');
-  });
+  // Apply sort toggle handler
+  $('#filter-alpha').click(sortModeHandler);
+  $('#filter-commit').click(sortModeHandler);
+
+  // Sort direction toggle function
+  let sortDirectionHandler = e => {
+    setAscending(sortAscending ? false : true);
+
+    let selectedElement = sortAscending ? '#filter-asc' : '#filter-des';
+    let deselectedElement = (!sortAscending) ? '#filter-asc' : '#filter-des';
+
+    $(selectedElement).removeClass('btn-light').addClass('btn-primary');
+    $(deselectedElement).addClass('btn-light').removeClass('btn-primary');
+  }
+
+  // Apply sort direction toggle handler
+  $('#filter-asc').click(sortDirectionHandler);
+  $('#filter-des').click(sortDirectionHandler);
 
   // Bind markdown anchors
   $('.overview').on('click', 'a', function(e) {
