@@ -10,6 +10,9 @@ markdownConverter.setFlavor('github');
 markdownConverter.setOption('emoji', true);
 markdownConverter.setOption('ghMentions', config.enableReadmeGitHubMentionLinks);
 
+// Keep track of closing animation state
+let isOverviewClosing = false;
+
 /**
  * Shows the overview panel for the given repo
  */
@@ -73,6 +76,7 @@ export function showOverview(repo) {
  * Close the overview panel
  */
 export function closeOverview() {
+  isOverviewClosing = true;
   
   // Slide the overview out
   $('.overview').css('transform', 'translateX(100%)'); 
@@ -80,11 +84,16 @@ export function closeOverview() {
   // Fade out the cover
   $('.overview-cover').css('opacity', 0);
 
-  // Put away the cover after it's faded (400ms)
-  setTimeout(() => $('.overview-cover').css('z-index', -1), 400);
+  setTimeout(() => {
+    // Clear the markdown once its gone    
+    $('.md').empty();
 
-  // Clear the markdown once its gone
-  setTimeout(() => $('.md').empty(), 400);
+    // Put away the cover after it's faded (400ms)
+    $('.overview-cover').css('z-index', -1);
+
+    // Toggle off closing state
+    isOverviewClosing = false;
+  }, 400);
 
   // Enable scrolling on the homepage
   $('html').css('overflow-y', 'scroll');
