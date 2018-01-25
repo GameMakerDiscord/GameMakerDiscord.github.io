@@ -9,7 +9,7 @@ $ npm install
 ```
 
 ## Development
-This project uses [parcel](https://github.com/parcel-bundler/parcel) for the build process, which is fairly automated. A shortcut for running development and buids are provided as `npm start` and `npm run build` respectively.
+This project uses [parcel](https://github.com/parcel-bundler/parcel) for the build process, which is fairly automated. A shortcut for running development and builds are provided as `npm start` and `npm run build` respectively.
 
 The source of the website can be found entirely under the `src` folder. The web assets found in the root of the directory should **not** be modified, as they are put there during the build process by parcel.
 
