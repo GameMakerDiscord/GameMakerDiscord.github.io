@@ -75,6 +75,25 @@ h1 .logo-link {
   }
 }
 
+.search-bar {
+  input[type=text] {
+    width: 35%;
+    min-width: 200px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .btn {
+    border-radius: 0;
+    box-shadow: none;
+
+    &:last-child {
+      border-top-right-radius: 0.2rem;
+      border-bottom-right-radius: 0.2rem;
+    }
+  }
+}
+
 .card-gms2 {
   cursor: pointer;
   border: 1px solid #282828;
@@ -201,11 +220,6 @@ h1 .logo-link {
   }
 
   .form-check-input:checked + .form-check-label > .badge {
-    // box-shadow: 0px 2px 0px $topic-highlight,
-    //             0px -2px 0px $topic-highlight,
-    //             2px 0px 0px $topic-highlight,
-    //             -2px 0px 0px $topic-highlight;
-    
     box-shadow: 0 0 0 2px $topic-highlight;
   }
 
@@ -221,16 +235,6 @@ h1 .logo-link {
         background-color: lighten($value, 15);
       }
     }
-  }
-}
-
-.filters {
-  margin-right: auto;
-  margin-left: auto;
-  font-size: 1.1rem;
-
-  .btn {
-    box-shadow: none;
   }
 }
 

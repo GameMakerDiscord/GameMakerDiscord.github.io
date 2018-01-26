@@ -80,35 +80,33 @@ function bindInputs() {
     updateQuery(query);
   });
 
-  // Sort mode toggle function
-  let sortModeHandler = e => {
+  // Sort mode button
+  $('#filter-mode').click(e => {
+
+    // Toggle mode
     setMode(sortMode === sortModes.alphabetical ? sortModes.commitDate : sortModes.alphabetical);
 
-    let selectedElement = sortMode === sortModes.alphabetical ? '#filter-alpha' : '#filter-commit';
-    let deselectedElement = sortMode !== sortModes.alphabetical ? '#filter-alpha' : '#filter-commit';
+    // Change text
+    $(e.target).text(sortMode === sortModes.alphabetical ? 'Alphabetical' : 'Commit Date');
+  });
 
-    $(selectedElement).removeClass('btn-outline-secondary').addClass('btn-primary');
-    $(deselectedElement).addClass('btn-outline-secondary').removeClass('btn-primary');
-  }
+  // Sort direction button
+  $('#filter-direction').click(e => {
 
-  // Apply sort toggle handler
-  $('#filter-alpha').click(sortModeHandler);
-  $('#filter-commit').click(sortModeHandler);
-
-  // Sort direction toggle function
-  let sortDirectionHandler = e => {
+    // Get svg icon reference
+    // NOTE: using $(e.target) breaks after toggling mode, so explicitely select #filter-direction
+    let svg = $('#filter-direction').find('svg');
+    
+    // Toggle direction
     setAscending(sortAscending ? false : true);
 
-    let selectedElement = sortAscending ? '#filter-asc' : '#filter-des';
-    let deselectedElement = (!sortAscending) ? '#filter-asc' : '#filter-des';
-
-    $(selectedElement).removeClass('btn-outline-secondary').addClass('btn-primary');
-    $(deselectedElement).addClass('btn-outline-secondary').removeClass('btn-primary');
-  }
-
-  // Apply sort direction toggle handler
-  $('#filter-asc').click(sortDirectionHandler);
-  $('#filter-des').click(sortDirectionHandler);
+    // Change icon
+    if (sortAscending) {
+      svg.removeClass('fa-sort-amount-down').addClass('fa-sort-amount-up');
+    } else {
+      svg.addClass('fa-sort-amount-down').removeClass('fa-sort-amount-up');
+    }
+  });
 
   // Bind markdown anchors
   $('.overview').on('click', 'a', function(e) {
