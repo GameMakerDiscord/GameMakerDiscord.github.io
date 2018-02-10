@@ -236,6 +236,12 @@ h1 .logo-link {
       }
     }
   }
+
+  .form-check.topic-staff-pick {
+    .badge {
+      background-color: lighten(#867d50, 15);
+    }
+  }
 }
 
 @media(max-width: 1024px) {

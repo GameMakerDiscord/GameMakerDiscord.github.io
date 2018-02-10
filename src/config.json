@@ -5,6 +5,7 @@
     "example": "file-code",
     "game": "gamepad",
     "extension": "cogs",
-    "library": "book"
+    "library": "book",
+    "staff-pick": "star"
   }
 }
