@@ -74,7 +74,7 @@ export function filterRepos() {
       }
 
       // Add repos that have query in description
-      if (!added && ~repo.description.toUpperCase().indexOf(query)) {
+      if (!added && repo.description && ~repo.description.toUpperCase().indexOf(query)) {
         searchResults.push(repo);
       }
     });
