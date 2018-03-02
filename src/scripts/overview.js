@@ -2,6 +2,7 @@
 import $ from 'jquery';
 import showdown from 'showdown';
 import { getScrollBarWidth, isBodyScrolling } from './scrollbar';
+import { navigate } from './router';
 import * as config from '../config.json';
 
 // Set up markdown processor
@@ -17,6 +18,7 @@ let isOverviewClosing = false;
  * Shows the overview panel for the given repo
  */
 export function showOverview(repo) {
+  navigate(`/${repo.name}`);
 
   // Set repo button link
   $('#visit-repo').attr('href', repo.html_url);
@@ -82,6 +84,8 @@ export function showOverview(repo) {
  * Close the overview panel
  */
 export function closeOverview() {
+  navigate(``);
+
   isOverviewClosing = true;
   
   // Slide the overview out

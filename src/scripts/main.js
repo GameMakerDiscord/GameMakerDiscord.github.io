@@ -10,6 +10,7 @@ import 'babel-polyfill';
 import { showOverview, closeOverview } from './overview';
 import { parseTopics, buildTopics } from './topics';
 import { updateRepos, updateQuery, filterRepos, setMode, sortModes, setAscending, sortMode, sortAscending } from './search';
+import { getCurrentPath } from './router';
 import buildRepoGrid from './grid';
 import loadData from './api';
 
@@ -56,6 +57,9 @@ let topics;
   
   // Hide the loading screen
   hideLoadingScreen();
+
+  // Open a repo if the url hash contains one
+  openHashedRepo();
 })();
 
 /**
@@ -146,4 +150,19 @@ function hideLoadingScreen() {
 
   // Remove the loading screen after its gone
   setTimeout(() => $('.loading-container').remove(), 400);
+}
+
+/**
+ * Opens a repo if the url contains a repo name after the hash
+ */
+function openHashedRepo() {
+  let currentRoute = getCurrentPath();
+
+  if (!currentRoute.length) return;
+
+  org.repos.some((repo) => {
+    if (repo.name === currentRoute) {
+      showOverview(repo);
+    }
+  });
 }
