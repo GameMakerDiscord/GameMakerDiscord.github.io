@@ -17,7 +17,7 @@ let isOverviewClosing = false;
  * Shows the overview panel for the given repo
  */
 export function showOverview(repo) {
-  
+
   // Set repo button link
   $('#visit-repo').attr('href', repo.html_url);
 

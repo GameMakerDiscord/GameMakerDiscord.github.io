@@ -3,6 +3,9 @@ import $ from 'jquery';
 import Popper from 'popper.js';
 import bootstrap from 'bootstrap';
 
+// Compile babel polyfill
+import 'babel-polyfill';
+
 // Local imports
 import { showOverview, closeOverview } from './overview';
 import { parseTopics, buildTopics } from './topics';

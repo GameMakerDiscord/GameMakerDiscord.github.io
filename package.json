@@ -1,7 +1,7 @@
 {
   "name": "gamemakerdiscord.github.io",
   "version": "1.0.0",
-  "description": "",
+  "description": "GameMakerDiscord Home Page",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html -d ./"
@@ -18,12 +18,16 @@
   },
   "homepage": "https://github.com/GameMakerDiscord/GameMakerDiscord.github.io#readme",
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.2",
+    "@fortawesome/fontawesome": "^1.1.4",
+    "autoprefixer": "^8.0.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "bootstrap": "^4.0.0",
     "jquery": "^3.3.1",
     "node-sass": "^4.7.2",
-    "parcel-bundler": "^1.4.1",
-    "popper.js": "^1.12.9",
+    "parcel-bundler": "^1.6.2",
+    "popper.js": "^1.13.0",
+    "postcss-modules": "^1.1.0",
     "showdown": "^1.8.6"
   }
 }
